@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BannerView">
+        <!--点选中的颜色值-->
+        <attr name="dotIndicationCheck" format="color|reference" />
+        <attr name="dotIndicationNo" format="color|reference" />
+        <!--点的大小-->
+        <attr name="dotSize" format="dimension" />
+        <!--点的位置-->
+        <attr name="doGravity" format="enum">
+            <enum name="center" value="0" />
+            <enum name="left" value="-1" />
+            <enum name="right" value="1" />
+        </attr>
+
+    </declare-styleable>
+
+
+</resources>
