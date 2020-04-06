@@ -57,6 +57,9 @@ public class DotIndicatorView extends View {
         canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, getMeasuredWidth() / 2, paint);
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, 0, 0, paint);
+        bitmap.recycle();
+        bitmap = null;
+
         return circleBitmap;
 
     }
