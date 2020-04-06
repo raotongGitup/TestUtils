@@ -3,13 +3,17 @@ package com.example.testutils.base.presenter;
 import com.example.testutils.base.activity.BaseView;
 import com.example.testutils.base.moudle.BaseMoudle;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
 
 public class BasePresenter<V extends BaseView, M extends BaseMoudle> {
 
-    private V mView, mProxyView;
+    private WeakReference<V> mWeakReference;
+    private V mProxyView;
     private M mMoudle;
 
     public M getmMoudle() {
@@ -19,23 +23,37 @@ public class BasePresenter<V extends BaseView, M extends BaseMoudle> {
     // 绑定
     public void onAttach(final V mView) {
         // 使用动态代理实现代码的统一处理
-        // this.mView = mView;
+        this.mWeakReference = new WeakReference<V>(mView);
         mProxyView = (V) Proxy.newProxyInstance(mView.getClass().getClassLoader(), mView.getClass().getInterfaces(), new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                if (mView == null) {
+                if (mWeakReference == null || mWeakReference.get() == null) {
                     return null;
                 }
-                return method.invoke(mView, args);
+                return method.invoke(mWeakReference.get(), args);
             }
         });
+
+        /**
+         * 动态创建moudle 利用发射获取对应moudle
+         * */
+        Type getype = this.getClass().getGenericSuperclass();
+        Type[] params = ((ParameterizedType) getype).getActualTypeArguments();
+        try {
+            // 最好判断下类型
+            mMoudle = (M) ((Class) params[1]).newInstance();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
 
     }
 
     // 解绑
     public void onDetach() {
-
-        this.mView = null;
+        mWeakReference.clear();
+        mWeakReference = null;
 
     }
 
