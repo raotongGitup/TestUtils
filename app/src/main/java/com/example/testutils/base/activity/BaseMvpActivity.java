@@ -5,54 +5,28 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.testutils.base.inject.InjectPresenter;
 import com.example.testutils.base.presenter.BasePresenter;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.testutils.base.proxy.IMvpProxy;
 
 public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView {
 
-    private List<BasePresenter> mPreaenters;
+
+    private IMvpProxy proxy;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPreaenters = new ArrayList<>();
-        initActivityParesent();
+        setContentView();
+        proxy = new IMvpProxy(this);
+        proxy.crAttachPresenter();
+
         initView();
         initData();
 
     }
 
-    protected void initActivityParesent() {
-        Field[] fields = this.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            InjectPresenter injectPresenter = field.getAnnotation(InjectPresenter.class);
-            if (injectPresenter != null) {
-                Class<? extends BasePresenter> presenterClass = null;
-                if (field.getType().getClass().isAssignableFrom(BasePresenter.class)) {
-                    presenterClass = (Class<? extends BasePresenter>) field.getType();
-                } else {
-                    throw new RuntimeException("请在正确的presenter添加注释" + this.getClass().getName());
-                }
-                try {
-                    BasePresenter basePresenter = presenterClass.newInstance();
-                    basePresenter.onAttach(this);
-                    field.setAccessible(true);
-                    field.set(this, basePresenter);
-                    mPreaenters.add(basePresenter);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
-
-            }
-
-        }
-
-    }
+    protected abstract void setContentView();
 
     protected abstract void initData();
 
@@ -61,10 +35,8 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        for (BasePresenter presenter : mPreaenters) {
-            presenter.onDetach();
+        proxy.onDetachPresenter();
 
-        }
 
     }
 }
