@@ -39,6 +39,11 @@ public abstract class BaseMvpFragment extends Fragment implements BaseView {
         initData();
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+
     protected abstract void initData();
 
     protected abstract void initView();
@@ -53,7 +58,6 @@ public abstract class BaseMvpFragment extends Fragment implements BaseView {
         if (view == null) {
             view = mRootView.findViewById(viewId);
             sparseArray.put(viewId, view);
-
         } else {
             view = sparseArray.get(viewId);
         }
