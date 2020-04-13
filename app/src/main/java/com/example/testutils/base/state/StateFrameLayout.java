@@ -18,10 +18,7 @@ public class StateFrameLayout extends FrameLayout {
      * loading 加载id
      */
     public static final int LAYOUT_LOADING_ID = 0x001;
-    /**
-     * 内容id
-     */
-    public static final int LAYOUT_CONTENT_ID = 0x010;
+
     /**
      * 异常id
      */
@@ -55,6 +52,7 @@ public class StateFrameLayout extends FrameLayout {
     public StateFrameLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
     /**
      * 设置状态管理者manager
      */
@@ -65,9 +63,9 @@ public class StateFrameLayout extends FrameLayout {
     }
 
     private void addAllLayoutToRootLayout() {
-        if (mStatusLayoutManager.contentLayoutResId != 0) {
-            addLayoutResId(mStatusLayoutManager.contentLayoutResId, StateFrameLayout.LAYOUT_CONTENT_ID);
-        }
+//        if (mStatusLayoutManager.contentLayoutResId != 0) {
+//            addLayoutResId(mStatusLayoutManager.contentLayoutResId, StateFrameLayout.LAYOUT_CONTENT_ID);
+//        }
         if (mStatusLayoutManager.loadingLayoutResId != 0) {
             addLayoutResId(mStatusLayoutManager.loadingLayoutResId, StateFrameLayout.LAYOUT_LOADING_ID);
         }
@@ -146,11 +144,11 @@ public class StateFrameLayout extends FrameLayout {
     /**
      * 显示内容
      */
-    public void showContent() {
-        if (layoutSparseArray.get(LAYOUT_CONTENT_ID) != null) {
-            showHideViewById(LAYOUT_CONTENT_ID);
-        }
-    }
+//    public void showContent() {
+//        if (layoutSparseArray.get(LAYOUT_CONTENT_ID) != null) {
+//            showHideViewById(LAYOUT_CONTENT_ID);
+//        }
+//    }
 
     /**
      * 显示空数据

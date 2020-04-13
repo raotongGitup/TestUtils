@@ -112,12 +112,12 @@ public  class StateLayoutManager {
         rootFrameLayout.goneLoading();
     }
 
-    /**
-     * 显示内容
-     */
-    public void showContent() {
-        rootFrameLayout.showContent();
-    }
+//    /**
+//     * 显示内容
+//     */
+//    public void showContent() {
+//        rootFrameLayout.showContent();
+//    }
 
     /**
      * 显示空数据
