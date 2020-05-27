@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
 /**
- * 半透明+缩放(banner透明加缩放动画)
+ * 半透明+缩放(banner透明加缩放动画走廊效果)
  */
 public class GalleryTransformer implements ViewPager.PageTransformer {
     private static final float MAX_ALPHA = 0.5f;
