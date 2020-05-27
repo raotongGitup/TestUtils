@@ -115,6 +115,7 @@ public class BannerView extends RelativeLayout {
     public void setAdapter(BannerAdapter adapter) {
         this.adapter = adapter;
         viewPage.setAdapter(adapter);
+
         viewPage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

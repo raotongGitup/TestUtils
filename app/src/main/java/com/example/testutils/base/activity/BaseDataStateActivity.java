@@ -16,6 +16,7 @@ public abstract class BaseDataStateActivity extends BaseMvpActivity {
     private FrameLayout mContentView;
     protected StateLayoutManager statusLayoutManager;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
