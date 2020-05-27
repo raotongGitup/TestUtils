@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
             public View getView(final int position, View contrtView) {
                 ImageView imageView = null;
                 if (contrtView == null) {
-                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                     imageView = new ImageView(MainActivity.this);
+                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                     imageView.setImageResource(R.mipmap.banner2);
                 } else {
                     imageView = (ImageView) contrtView;
