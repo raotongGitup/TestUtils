@@ -1,4 +1,4 @@
-package com.example.testutils;
+package com.example.testutils.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testutils.R;
 import com.example.testutils.base.banner.BannerAdapter;
 import com.example.testutils.base.banner.BannerView;
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         for (int i = 0; i < 5; i++) {
             arrrar.add("数据");
+
+
         }
 
         banner = ((BannerView) findViewById(R.id.banner_view));

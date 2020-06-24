@@ -58,6 +58,7 @@ public class BannerViewPage extends ViewPager {
 
     /*开启播放*/
     public void setStartbanner() {
+
         handler.removeMessages(MESSAGE_WHAT); // 防止多条消息
         handler.sendEmptyMessageDelayed(MESSAGE_WHAT, START_TIME);
 
