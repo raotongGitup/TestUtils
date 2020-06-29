@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
 //    aop使用库
     implementation 'org.aspectj:aspectjrt:1.8.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha03'
 }
 
 import org.aspectj.bridge.IMessage
