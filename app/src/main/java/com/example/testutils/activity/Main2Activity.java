@@ -17,6 +17,7 @@ public class Main2Activity extends AppCompatActivity {
     private String TAG = "jason";
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

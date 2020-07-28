@@ -24,6 +24,8 @@ public class BehaviorAspect {
     @Pointcut("execution(@com.example.testutils.aop.BehaviorTrace * *(..))")
     public void annorBehavior() {
 
+
+
     }
 
     // 切完以后如何处理
