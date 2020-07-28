@@ -47,6 +47,12 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         initSurface();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
     private void initSurface() {
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         surfaceHolder.setFormat(PixelFormat.TRANSPARENT);
@@ -94,6 +100,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
+
 
 
     @Override

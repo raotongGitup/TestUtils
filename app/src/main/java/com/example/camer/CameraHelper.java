@@ -243,7 +243,7 @@ public class CameraHelper {
      */
     private void initParameters() {
         try {
-//            int orientation = LoanApplication.getInstance().getResources().getConfiguration().orientation;
+//            int orientation = LoanApplication.orientation;
 //            if(orientation == Configuration.ORIENTATION_PORTRAIT){
 //                camera.setDisplayOrientation(90);//竖屏
 //            } else if (orientation == Configuration.ORIENTATION_LANDSCAPE){
@@ -262,17 +262,17 @@ public class CameraHelper {
                 parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
             }
 
-//            if (frameWidth > 0 && frameHeight > 0) {
-//                //获取支持系统的预览尺寸
-//                List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
-//                //获取最佳预览尺寸
-//                Camera.Size previewSize = getOptimalPreviewSize(supportedPreviewSizes, frameWidth, frameHeight);
-//                try {
-//                    parameters.setPreviewSize(previewSize.width, previewSize.height);
-//                } catch (Exception e) {
-//                    Log.e(TAG, "不支持的相机预览分辨率: " + previewSize.width + " × " + previewSize.height);
-//                }
-//            }
+            if (frameWidth > 0 && frameHeight > 0) {
+                //获取支持系统的预览尺寸
+                List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
+                //获取最佳预览尺寸
+                Camera.Size previewSize = getOptimalPreviewSize(supportedPreviewSizes, frameWidth, frameHeight);
+                try {
+                    parameters.setPreviewSize(previewSize.width, previewSize.height);
+                } catch (Exception e) {
+                    Log.e(TAG, "不支持的相机预览分辨率: " + previewSize.width + " × " + previewSize.height);
+                }
+            }
 
             if (surfaceWidth > 0 && surfaceHeight > 0) {
                 //获取支持的照片尺寸
