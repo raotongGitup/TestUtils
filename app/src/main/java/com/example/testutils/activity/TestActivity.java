@@ -45,6 +45,11 @@ public class TestActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void weixin(View view) {
+        Intent intent = new Intent(this, WeiXinActivity.class);
+        startActivity(intent);
+
+    }
 
 
 }
