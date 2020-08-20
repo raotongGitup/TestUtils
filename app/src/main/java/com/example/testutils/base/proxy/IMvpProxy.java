@@ -41,6 +41,9 @@ public class IMvpProxy<V extends BaseView> extends ImProxy implements MvpProxyAc
 
     protected void initActivityParesent() {
         Field[] fields = mView.getClass().getDeclaredFields();
+
+
+
         for (Field field : fields) {
             InjectPresenter injectPresenter = field.getAnnotation(InjectPresenter.class);
             if (injectPresenter != null) {
