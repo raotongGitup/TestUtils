@@ -3,15 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:viewBindingIgnore="true"
     android:layout_height="match_parent"
-    tools:context=".activity.AIDLActivity">
-
-    <Button
-        android:id="@+id/aidi_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    tools:context=".activity.ViewpageActivity">
+    <com.example.view.GenderSwitchView
         android:layout_centerInParent="true"
-        android:text="mBtnAidl" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

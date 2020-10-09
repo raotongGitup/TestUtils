@@ -14,7 +14,7 @@ import com.example.testutils.R;
 
 public class TestActivity extends AppCompatActivity {
 
-    Handler handler=new Handler(){
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
@@ -22,13 +22,12 @@ public class TestActivity extends AppCompatActivity {
     };
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        Message message=Message.obtain();
+        Message message = Message.obtain();
 
         long sty = Runtime.getRuntime().totalMemory();
         System.out.println("----------------------" + sty / 1024);
@@ -66,11 +65,21 @@ public class TestActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
     public void weixin(View view) {
         Intent intent = new Intent(this, WeiXinActivity.class);
         startActivity(intent);
 
     }
 
+    public void viewpage(View view) {
+        Intent intent = new Intent(this, ViewpageActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewBind(View view) {
+        Intent intent = new Intent(this, LastViewBinActivity.class);
+        startActivity(intent);
+    }
 
 }

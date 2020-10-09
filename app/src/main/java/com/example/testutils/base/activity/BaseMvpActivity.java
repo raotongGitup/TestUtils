@@ -1,23 +1,30 @@
 package com.example.testutils.base.activity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewbinding.ViewBinding;
 
-import com.example.testutils.base.presenter.BasePresenter;
 import com.example.testutils.base.proxy.IMvpProxy;
+import com.example.testutils.utils.ClassUtils;
 import com.gyf.immersionbar.ImmersionBar;
 
-public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView {
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
+public abstract class BaseMvpActivity<T extends ViewBinding> extends AppCompatActivity implements BaseView {
 
+   public T binding;
     private IMvpProxy proxy;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView();
+        binding = getBinding();
+        setContentView(binding.getRoot());
         if (getStartbar()) {
             ImmersionBar.with(this);
         }
@@ -40,6 +47,19 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
         initData();
     }
 
+    protected T getBinding() {
+        try {
+            Type superClass = getClass().getGenericSuperclass();
+            Type type = ((ParameterizedType) superClass).getActualTypeArguments()[0];
+            Class<?> clazz = ClassUtils.getRawType(type);
+            Method method = clazz.getMethod("inflate", LayoutInflater.class);
+            return (T) method.invoke(null, getLayoutInflater());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private boolean getStartbar() {
         return true;
     }
@@ -51,8 +71,6 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
     protected boolean statusBarDarkFont() {
         return true;
     }
-
-    protected abstract void setContentView();
 
     protected abstract void initData();
 

@@ -13,7 +13,7 @@
         android:onClick="addSpan"
         android:text="添加一个块" />
 
-    <com.example.atfriend.widget.ContactEditTexton
+    <com.example.atfriend.widget.ContactEditText
         android:id="@+id/et_user_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

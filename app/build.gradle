@@ -3,6 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+    viewBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.example.testutils"
         minSdkVersion 15
@@ -18,6 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+
 }
 
 dependencies {
@@ -40,7 +46,10 @@ dependencies {
 //    aop使用库
     implementation 'org.aspectj:aspectjrt:1.8.13'
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha03'
+
+
 }
+
 
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler

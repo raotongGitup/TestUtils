@@ -11,7 +11,7 @@
         android:onClick="addSpan"
         android:text="添加一个块" />
 
-    <com.dds.atfriend.widget.MsgEditText
+    <com.example.atfriend.widget.MsgEditText
         android:id="@+id/et_user_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
