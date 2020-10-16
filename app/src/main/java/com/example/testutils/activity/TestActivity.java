@@ -82,4 +82,9 @@ public class TestActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void MvPView(View view) {
+        Intent intent = new Intent(this, MvpActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.testutils.R;
 import com.example.testutils.base.banner.BannerAdapter;
 import com.example.testutils.base.banner.BannerView;
-import com.example.testutils.base.inject.InjectPresenter;
-import com.example.testutils.base.presenter.BasePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     private BannerView banner;
     private List<String> arrrar = new ArrayList<>();
-
-    @InjectPresenter
-    BasePresenter presenter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
