@@ -20,7 +20,6 @@ public class BasePresenter<V extends BaseView, M extends BaseMoudle> implements 
         return mMoudle;
     }
 
-    @SuppressWarnings({"unchecked", "TryWithIdenticalCatches"})
     // 绑定
     public void onAttach(final V mView) {
         // 使用动态代理实现代码的统一处理
@@ -51,7 +50,7 @@ public class BasePresenter<V extends BaseView, M extends BaseMoudle> implements 
 
     }
 
-    // 解绑
+    // 解绑 mWeakReference
     public void onDetach() {
         mWeakReference.clear();
         mWeakReference = null;
