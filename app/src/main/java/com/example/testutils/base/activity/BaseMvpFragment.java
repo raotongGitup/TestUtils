@@ -20,10 +20,14 @@ import java.lang.reflect.Type;
 public abstract class BaseMvpFragment<T extends ViewBinding> extends Fragment implements BaseView {
     private IMvpProxy iMvpProxy;
     public T binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = getBinding();
+        if (binding == null) {
+            binding = getBinding();
+        }
+
         return binding.getRoot();
     }
 
@@ -34,32 +38,22 @@ public abstract class BaseMvpFragment<T extends ViewBinding> extends Fragment im
         iMvpProxy.crAttachPresenter();
         initView();
         initData();
+
+
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
+
         super.setUserVisibleHint(isVisibleToUser);
+
+
     }
+
 
     protected abstract void initData();
 
     protected abstract void initView();
-
-//    public abstract int setContentView();
-
-//    /**
-//     * 封装findViewById
-//     */
-//    protected <V extends View> V getView(int viewId) {
-//        View view = sparseArray.get(viewId);
-//        if (view == null) {
-//            view = mRootView.findViewById(viewId);
-//            sparseArray.put(viewId, view);
-//        } else {
-//            view = sparseArray.get(viewId);
-//        }
-//        return (V) view;
-//    }
 
     @Override
     public void onDestroy() {
