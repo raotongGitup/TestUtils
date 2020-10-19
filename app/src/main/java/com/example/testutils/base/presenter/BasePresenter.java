@@ -10,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
 import java.lang.reflect.Type;
 
-public class BasePresenter<V extends BaseView, M extends BaseMoudle> {
+public class BasePresenter<V extends BaseView, M extends BaseMoudle> implements BaseView {
 
     private WeakReference<V> mWeakReference;
     private V mProxyView;
@@ -20,20 +20,21 @@ public class BasePresenter<V extends BaseView, M extends BaseMoudle> {
         return mMoudle;
     }
 
+    @SuppressWarnings({"unchecked", "TryWithIdenticalCatches"})
     // 绑定
     public void onAttach(final V mView) {
         // 使用动态代理实现代码的统一处理
         this.mWeakReference = new WeakReference<V>(mView);
+        //使用动态代理做统一的逻辑判断 aop 思想
         mProxyView = (V) Proxy.newProxyInstance(mView.getClass().getClassLoader(), mView.getClass().getInterfaces(), new InvocationHandler() {
             @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
                 if (mWeakReference == null || mWeakReference.get() == null) {
                     return null;
                 }
-                return method.invoke(mWeakReference.get(), args);
+                return method.invoke(mWeakReference.get(), objects);
             }
         });
-
         /**
          * 动态创建moudle 利用发射获取对应moudle
          * */

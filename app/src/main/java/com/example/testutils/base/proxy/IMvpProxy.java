@@ -42,13 +42,11 @@ public class IMvpProxy<V extends BaseView> extends ImProxy implements MvpProxyAc
     protected void initActivityParesent() {
         Field[] fields = mView.getClass().getDeclaredFields();
 
-
-
         for (Field field : fields) {
             InjectPresenter injectPresenter = field.getAnnotation(InjectPresenter.class);
             if (injectPresenter != null) {
                 Class<? extends BasePresenter> presenterClass = null;
-                if (field.getType().getClass().isAssignableFrom(BasePresenter.class)) {
+                if (BasePresenter.class.isAssignableFrom(field.getType())) {
                     presenterClass = (Class<? extends BasePresenter>) field.getType();
                 } else {
                     throw new RuntimeException("请在正确的presenter添加注释" + this.getClass().getName());
@@ -57,7 +55,7 @@ public class IMvpProxy<V extends BaseView> extends ImProxy implements MvpProxyAc
                     BasePresenter basePresenter = presenterClass.newInstance();
                     basePresenter.onAttach(mView);
                     field.setAccessible(true);
-                    field.set(this, basePresenter);
+                    field.set(mView, basePresenter);
                     mPreaenters.add(basePresenter);
                 } catch (Exception e) {
                     e.printStackTrace();

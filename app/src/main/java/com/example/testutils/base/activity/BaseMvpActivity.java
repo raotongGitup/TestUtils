@@ -17,7 +17,7 @@ import java.lang.reflect.Type;
 
 public abstract class BaseMvpActivity<T extends ViewBinding> extends AppCompatActivity implements BaseView {
 
-   public T binding;
+    public T binding;
     private IMvpProxy proxy;
 
     @Override
@@ -42,7 +42,6 @@ public abstract class BaseMvpActivity<T extends ViewBinding> extends AppCompatAc
 
         proxy = new IMvpProxy(this);
         proxy.crAttachPresenter();
-
         initView();
         initData();
     }

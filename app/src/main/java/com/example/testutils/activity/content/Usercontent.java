@@ -6,9 +6,9 @@ import com.example.testutils.base.activity.BaseView;
 /**
  * create at 2020/10/16
  * author raotong
- * Description :Mvp封装的控制类
+ * Description :Mvp封装的控制类（Usermvp的实例测试使用实例）
  */
-public class Usercontent {
+public interface Usercontent {
     public interface UserInfoView extends BaseView {
         // 正在加载中
         void loading();
@@ -23,6 +23,7 @@ public class Usercontent {
 
     public interface UserInfoPresenter {
         // 正在加载中
+        void gteToken();
 
 
     }
