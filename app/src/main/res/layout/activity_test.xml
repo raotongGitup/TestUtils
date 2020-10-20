@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,77 +8,83 @@
     tools:context=".activity.TestActivity"
     tools:viewBindingIgnore="true">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="banner"
-        android:text="banner"
-        tools:ignore="OnClick" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="camer"
-        android:text="自定义相机"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="banner"
+            android:text="banner"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="h5"
-        android:text="H5跳转到app页面"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="camer"
+            android:text="自定义相机"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="messager"
-        android:text="messager进程通信"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="h5"
+            android:text="H5跳转到app页面"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="aIdl"
-        android:text="AIDL进程通信"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="messager"
+            android:text="messager进程通信"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="weixin"
-        android:text="banner"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="aIdl"
+            android:text="AIDL进程通信"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="viewpage"
-        android:text="pageView"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="weixin"
+            android:text="banner"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="viewBind"
-        android:text="viewbinding"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="viewpage"
+            android:text="pageView"
+            tools:ignore="OnClick" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:onClick="MvPView"
-        android:text="mVPDabinding"
-        tools:ignore="OnClick" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="viewBind"
+            android:text="viewbinding"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="MvPView"
+            android:text="mVPDabinding"
+            tools:ignore="OnClick" />
+    </LinearLayout>
 
 
-</LinearLayout>
+</ScrollView>
