@@ -114,6 +114,10 @@ public class BannerView extends RelativeLayout {
 
     public void setAdapter(BannerAdapter adapter) {
         this.adapter = adapter;
+        if (adapter.getContent() == 0) {
+            view.setVisibility(GONE);
+            return;
+        }
         viewPage.setAdapter(adapter);
 
         viewPage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

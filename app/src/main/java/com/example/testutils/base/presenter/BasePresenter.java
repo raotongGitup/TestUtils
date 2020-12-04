@@ -22,6 +22,8 @@ public class BasePresenter<V extends BaseView, M extends BaseMoudle> implements 
 
     // 绑定
     public void onAttach(final V mView) {
+
+
         // 使用动态代理实现代码的统一处理
         this.mWeakReference = new WeakReference<V>(mView);
         //使用动态代理做统一的逻辑判断 aop 思想
@@ -34,6 +36,8 @@ public class BasePresenter<V extends BaseView, M extends BaseMoudle> implements 
                 return method.invoke(mWeakReference.get(), objects);
             }
         });
+
+
         /**
          * 动态创建moudle 利用发射获取对应moudle
          * */
@@ -41,6 +45,8 @@ public class BasePresenter<V extends BaseView, M extends BaseMoudle> implements 
         Type[] params = ((ParameterizedType) getype).getActualTypeArguments();
         try {
             // 最好判断下类型
+
+
             mMoudle = (M) ((Class) params[1]).newInstance();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
