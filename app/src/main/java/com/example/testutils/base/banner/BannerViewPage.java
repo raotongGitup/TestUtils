@@ -21,10 +21,10 @@ import java.util.List;
  */
 public class BannerViewPage extends ViewPager {
     public BannerAdapter adapter;
-    private static final int MESSAGE_WHAT = 0X01;
-    private final int START_TIME = 3500;
+    private static final int MESSAGE_WHAT = BannerConfig.MESSAGE_WHAT;
+    private int START_TIME = BannerConfig.START_TIME;
     private int INTT_PAGE = Integer.MAX_VALUE / 2;
-    private List<View> mConvertViews;
+    public List<View> mConvertViews;
 
     private Handler handler = new Handler() {
         @Override
@@ -48,11 +48,19 @@ public class BannerViewPage extends ViewPager {
         super(context, attrs);
         setCurrentItem(INTT_PAGE);
         mConvertViews = new ArrayList<>();
+
     }
 
     public void setAdapter(BannerAdapter adapter) {
         this.adapter = adapter;
         setAdapter(new BannerPagerAdapter());
+
+
+    }
+
+    /*播放时间*/
+    public void setDelayTime(int delayTime) {
+        START_TIME = delayTime;
 
     }
 
@@ -61,6 +69,7 @@ public class BannerViewPage extends ViewPager {
 
         handler.removeMessages(MESSAGE_WHAT); // 防止多条消息
         handler.sendEmptyMessageDelayed(MESSAGE_WHAT, START_TIME);
+
 
     }
 
@@ -85,7 +94,7 @@ public class BannerViewPage extends ViewPager {
         handler.removeMessages(MESSAGE_WHAT);
     }
 
-    public class BannerPagerAdapter extends PagerAdapter {
+    public  class BannerPagerAdapter extends PagerAdapter {
 
         @Override
         public int getCount() {

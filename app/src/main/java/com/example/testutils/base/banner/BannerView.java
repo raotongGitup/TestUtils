@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -20,6 +21,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.testutils.R;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * 供外部使用的bannerView
@@ -36,6 +38,8 @@ public class BannerView extends RelativeLayout {
     private Drawable nokIndication;
     private int mCurrentPosition;
     private int mDosize;
+    private onLoadBannerImageLister bannerImageLister;
+    private View.OnClickListener listener;
 
 
     public BannerView(Context context) {
@@ -144,6 +148,62 @@ public class BannerView extends RelativeLayout {
 
     }
 
+    public void setAdapter(final List<String> imageList) {
+        //  设置直接加载一张imageview的banner
+        if (imageList == null || imageList.size() == 0) {
+            view.setVisibility(GONE);
+            return;
+        }
+        adapter = new BannerAdapter() {
+            @Override
+            public View getView(int position, View convertView) {
+                ImageView imageView = null;
+                if (imageView == null) {
+                    imageView = new ImageView(mContent);
+                    if (bannerImageLister != null) {
+                        bannerImageLister.onLoadBanner(imageView, imageList.get(position));
+                        if (listener != null) {
+                            imageView.setOnClickListener(listener);
+                        }
+                    }
+                } else {
+                    imageView = (ImageView) convertView;
+                }
+                return imageView;
+            }
+
+            @Override
+            public int getContent() {
+                return imageList.size();
+            }
+        };
+        viewPage.setAdapter(adapter);
+        viewPage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (isAccording) {
+                    pageSelect(position);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        if (isAccording) {
+            initDotIndicator();
+        }
+
+
+    }
+
+
     /**
      * 设置选中的状态
      */
@@ -162,40 +222,68 @@ public class BannerView extends RelativeLayout {
     /**
      * 设置是否显示指示器
      */
-    public void setIsAccording(boolean isAccording) {
+    public BannerView setIsAccording(boolean isAccording) {
         this.isAccording = isAccording;
+        return this;
 
+    }
+
+    public BannerView setOnloadBannerList(onLoadBannerImageLister bannerImageLister) {
+        this.bannerImageLister = bannerImageLister;
+        return this;
+    }
+
+    /**
+     * 设置时间
+     * *
+     */
+
+    public BannerView setDelayTime(int delayTime) {
+        if (viewPage != null) {
+            viewPage.setDelayTime(delayTime);
+        }
+        return this;
+
+    }
+
+    public BannerView setOnClickList(View.OnClickListener listener) {
+        this.listener = listener;
+        return this;
     }
 
     /**
      * 设置指示器选中和没选中颜色（指示器为默认圆形）
      */
-    public void setIndicationColor(String check, String noCheck) {
+    public BannerView setIndicationColor(String check, String noCheck) {
         checkIndication = new ColorDrawable(Color.parseColor(check));
         nokIndication = new ColorDrawable(Color.parseColor(noCheck));
+        return this;
 
     }
 
     /**
      * 开始播放
      */
-    public void setStartbanner() {
+    public BannerView setStartbanner() {
         viewPage.setStartbanner();
+        return this;
     }
 
     /**
      * 设置指示器显示位置，0 居中，-1左侧，1 右侧
      */
-    public void setIndicatorGravity(int gravity) {
+    public BannerView setIndicatorGravity(int gravity) {
         this.IndicatorPosition = gravity;
+        return this;
 
     }
 
     /**
      * 圆点大小
      */
-    public void setmDosize(int mDosize) {
+    public BannerView setmDosize(int mDosize) {
         this.mDosize = mDosize;
+        return this;
 
     }
 
@@ -220,5 +308,10 @@ public class BannerView extends RelativeLayout {
     private int dip2px(int dip) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 dip, getResources().getDisplayMetrics());
+    }
+
+    public interface onLoadBannerImageLister {
+        void onLoadBanner(ImageView imageView, String url);
+
     }
 }
