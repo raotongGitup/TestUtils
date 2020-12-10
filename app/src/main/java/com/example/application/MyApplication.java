@@ -3,6 +3,7 @@ package com.example.application;
 import android.app.Application;
 
 import com.example.utils.AppContext;
+import com.example.utils.CrashHandler;
 
 /**
  * create at 2020/6/24
@@ -14,5 +15,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AppContext.getInstance().setAppLication(this);
+        CrashHandler.getInstance().init(this);
     }
 }

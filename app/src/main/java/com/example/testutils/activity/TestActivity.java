@@ -87,4 +87,9 @@ public class TestActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Error(View view) {
+        Intent intent = new Intent(this, OnErrorActivity.class);
+        startActivity(intent);
+    }
+
 }

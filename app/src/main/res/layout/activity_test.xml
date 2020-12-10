@@ -84,6 +84,14 @@
             android:onClick="MvPView"
             android:text="mVPDabinding"
             tools:ignore="OnClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="Error"
+            android:text="error"
+            tools:ignore="OnClick" />
     </LinearLayout>
 
 

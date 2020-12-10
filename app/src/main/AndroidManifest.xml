@@ -15,7 +15,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MvpActivity"></activity>
+        <activity android:name=".activity.OnErrorActivity"
+             android:process=":icon"></activity>
+        <activity android:name=".activity.MvpActivity" />
         <activity android:name=".activity.LastViewBinActivity" />
         <activity android:name=".activity.ViewpageActivity" />
         <activity android:name=".activity.WeiXinActivity" />
