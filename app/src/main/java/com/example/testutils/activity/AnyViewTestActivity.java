@@ -47,6 +47,8 @@ public class AnyViewTestActivity extends AppCompatActivity {
                 } else {
                     mLoadingAndRetryManager.showRetry();
                 }
+
+
             }
         }.start();
 
