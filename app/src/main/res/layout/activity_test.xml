@@ -92,6 +92,14 @@
             android:onClick="Error"
             android:text="error"
             tools:ignore="OnClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:onClick="Loading"
+            android:text="Loading"
+            tools:ignore="OnClick" />
     </LinearLayout>
 
 

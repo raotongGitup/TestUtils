@@ -92,4 +92,10 @@ public class TestActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Loading(View view) {
+        startActivity(new Intent(this, AnyViewTestActivity.class));
+
+
+    }
+
 }
