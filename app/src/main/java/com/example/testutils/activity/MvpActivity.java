@@ -2,7 +2,6 @@ package com.example.testutils.activity;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.testutils.activity.content.Usercontent;
 import com.example.testutils.activity.present.UserInfoPresenter;
@@ -15,9 +14,6 @@ public class MvpActivity extends BaseMvpActivity<ActivityMvpBinding> implements 
     private static final String TAG = "MvpActivity";
     @InjectPresenter
     UserInfoPresenter userInfoPresenter;
-
-    @InjectPresenter
-    TextView textView;
 
 
     @Override
