@@ -71,7 +71,7 @@ public abstract class BaseDataStateActivity extends BaseMvpActivity {
     protected abstract void onNetwork();
 
     // 正在加载中状态
-    protected void showLoading() {
+    public void showLoading() {
         statusLayoutManager.showLoading();
 
     }

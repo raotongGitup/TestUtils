@@ -2,11 +2,14 @@ package com.example.testutils.base.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewbinding.ViewBinding;
 
+import com.example.loading.LoadingAndRetryManager;
+import com.example.loading.OnLoadingAndRetryListener;
 import com.example.testutils.base.proxy.IMvpProxy;
 import com.example.testutils.utils.ClassUtils;
 import com.gyf.immersionbar.ImmersionBar;
@@ -19,6 +22,8 @@ public abstract class BaseMvpActivity<T extends ViewBinding> extends AppCompatAc
 
     public T binding;
     private IMvpProxy proxy;
+
+    private LoadingAndRetryManager mLoadingAnd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,8 +47,53 @@ public abstract class BaseMvpActivity<T extends ViewBinding> extends AppCompatAc
 
         proxy = new IMvpProxy(this);
         proxy.crAttachPresenter();
+        mLoadingAnd = LoadingAndRetryManager.generate(this, new OnLoadingAndRetryListener() {
+            @Override
+            public void setRetryEvent(View retryView) {
+                // 默认显示网络错误界面
+                setRetryEvents(retryView);
+            }
+
+            @Override
+            public void setLoadingEvent(View loadingView) {
+
+            }
+
+            @Override
+            public void setEmptyEvent(View emptyView) {
+                super.setEmptyEvent(emptyView);
+            }
+
+
+        });
+      //  closeLoading();
         initView();
         initData();
+
+    }
+
+    public void showLoading() {
+        if (mLoadingAnd != null) {
+            mLoadingAnd.showLoading();
+        }
+    }
+
+    public void closeLoading() {
+        if (mLoadingAnd != null) {
+            mLoadingAnd.showContent();
+
+        }
+    }
+
+    public void showRetry() {
+        if (mLoadingAnd != null) {
+            mLoadingAnd.showContent();
+
+        }
+    }
+
+    public void setRetryEvents(View retryView) {
+
     }
 
     protected T getBinding() {

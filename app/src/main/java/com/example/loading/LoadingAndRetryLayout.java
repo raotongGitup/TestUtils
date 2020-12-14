@@ -131,13 +131,7 @@ public class LoadingAndRetryLayout extends FrameLayout {
                 mRetryView.setVisibility(View.GONE);
             if (mContentView != null)
                 mContentView.setVisibility(View.GONE);
-        } else {
-            mEmptyView.setVisibility(GONE);
-            mRetryView.setVisibility(View.GONE);
-            mContentView.setVisibility(View.GONE);
-            mLoadingView.setVisibility(View.GONE);
         }
-
 
     }
 
@@ -165,6 +159,7 @@ public class LoadingAndRetryLayout extends FrameLayout {
         removeView(loadingView);
         addView(view);
         mLoadingView = view;
+        mLoadingView.setVisibility(GONE);
         return mLoadingView;
     }
 

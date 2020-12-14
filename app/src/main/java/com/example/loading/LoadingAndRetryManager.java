@@ -139,8 +139,5 @@ public class LoadingAndRetryManager {
         mLoadingAndRetryLayout.showEmpty();
     }
 
-    public void closeLoading() {
-
-    }
 
 }

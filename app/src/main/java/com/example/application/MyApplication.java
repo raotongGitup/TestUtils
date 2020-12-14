@@ -5,7 +5,6 @@ import android.app.Application;
 import com.example.loading.LoadingAndRetryManager;
 import com.example.testutils.R;
 import com.example.utils.AppContext;
-import com.example.utils.CrashHandler;
 
 /**
  * create at 2020/6/24
@@ -17,7 +16,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         AppContext.getInstance().setAppLication(this);
-        CrashHandler.getInstance().init(this);
+       // CrashHandler.getInstance().init(this);
         LoadingAndRetryManager.BASE_RETRY_LAYOUT_ID = R.layout.base_retry;
         LoadingAndRetryManager.BASE_LOADING_LAYOUT_ID = R.layout.base_loading;
         LoadingAndRetryManager.BASE_EMPTY_LAYOUT_ID = R.layout.base_empty;
