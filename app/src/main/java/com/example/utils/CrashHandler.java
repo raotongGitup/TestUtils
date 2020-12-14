@@ -116,7 +116,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         for (StackTraceElement element : elements) {
             sb.append(element.toString() + "\n");
         }
-
+        sb.append(e.getMessage());
         Log.e(TAG, sb.toString());
         uploadLog(saveLog(sb.toString()));
         return sb.toString();
