@@ -87,7 +87,7 @@ public abstract class BaseMvpActivity<T extends ViewBinding> extends AppCompatAc
 
     public void showRetry() {
         if (mLoadingAnd != null) {
-            mLoadingAnd.showContent();
+            mLoadingAnd.showRetry();
 
         }
     }

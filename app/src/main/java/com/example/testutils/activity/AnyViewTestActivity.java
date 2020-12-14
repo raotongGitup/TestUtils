@@ -1,16 +1,11 @@
 package com.example.testutils.activity;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loading.LoadingAndRetryManager;
-import com.example.loading.OnLoadingAndRetryListener;
 import com.example.testutils.R;
 import com.example.testutils.base.activity.BaseMvpActivity;
 import com.example.testutils.databinding.ActivityAnyViewTestBinding;
@@ -25,26 +20,26 @@ public class AnyViewTestActivity extends BaseMvpActivity<ActivityAnyViewTestBind
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_any_view_test);
         // idtextview = ((TextView) findViewById(R.id.id_textview));
-        mLoadingAndRetryManager = LoadingAndRetryManager.generate(binding.idTextview, new OnLoadingAndRetryListener() {
-            @Override
-            public void setRetryEvent(View retryView) {
-                retryRefreashTextView(retryView);
-            }
-            //generateLoadingLayoutId
-
-
-
-            @Override
-            public View generateLoadingLayout() {
-                View view = LayoutInflater.from(AnyViewTestActivity.this).inflate(R.layout.layout_loading_view, null);
-                ImageView imageView = view.findViewById(R.id.image_view);
-                ObjectAnimator oaY = ObjectAnimator.ofFloat(imageView, "rotationY", 0, 360);
-                oaY.setRepeatCount(ValueAnimator.INFINITE);
-                oaY.setDuration(5000);
-                oaY.start();
-                return view;
-            }
-        });
+//        mLoadingAndRetryManager = LoadingAndRetryManager.generate(binding.idTextview, new OnLoadingAndRetryListener() {
+//            @Override
+//            public void setRetryEvent(View retryView) {
+//                retryRefreashTextView(retryView);
+//            }
+//            //generateLoadingLayoutId
+//
+//
+//
+//            @Override
+//            public View generateLoadingLayout() {
+//                View view = LayoutInflater.from(AnyViewTestActivity.this).inflate(R.layout.layout_loading_view, null);
+//                ImageView imageView = view.findViewById(R.id.image_view);
+//                ObjectAnimator oaY = ObjectAnimator.ofFloat(imageView, "rotationY", 0, 360);
+//                oaY.setRepeatCount(ValueAnimator.INFINITE);
+//                oaY.setDuration(5000);
+//                oaY.start();
+//                return view;
+//            }
+//        });
 //
 //
 //        refreashTextView();
@@ -61,7 +56,7 @@ public class AnyViewTestActivity extends BaseMvpActivity<ActivityAnyViewTestBind
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                closeLoading();
+              showRetry();
 
 
             }
