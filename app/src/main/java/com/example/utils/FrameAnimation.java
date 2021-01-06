@@ -1,12 +1,11 @@
 package com.example.utils;
 
-
 import android.widget.ImageView;
 
 /**
- * create at 2020/10/20
- * author raotong
- * Description : 封装j解决帧动画造成的oom(但是cpu会增加)
+ * @author: raotong
+ * @data：2021/1/6 15:10
+ * @Description : 解决帧动画oom现象
  */
 public class FrameAnimation {
     private boolean mIsRepeat;
@@ -320,5 +319,4 @@ public class FrameAnimation {
             }
         }
     }
-
 }

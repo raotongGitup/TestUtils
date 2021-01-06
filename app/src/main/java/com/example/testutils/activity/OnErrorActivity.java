@@ -18,12 +18,14 @@ public class OnErrorActivity extends AppCompatActivity {
     }
 
     private void MainOnclick(View view) {
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        new Long("1999-03-11");
 
-            }
-        });
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
 
     }
