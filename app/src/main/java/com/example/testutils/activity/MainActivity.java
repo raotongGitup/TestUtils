@@ -42,11 +42,12 @@ public class MainActivity extends AppCompatActivity {
 //
 //                    imageView = new ImageView(MainActivity.this);
 //                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//                    imageView.setImageResource(R.mipmap.banner2);
+//
 //
 //                } else {
 //                    imageView = (ImageView) contrtView;
 //                }
+        // imageView.setImageResource(R.mipmap.banner2);
 ////                imageView.setOnClickListener(new View.OnClickListener() {
 ////                    @Override
 ////                    public void onClick(View v) {

@@ -158,17 +158,19 @@ public class BannerView extends RelativeLayout {
             @Override
             public View getView(int position, View convertView) {
                 ImageView imageView = null;
-                if (imageView == null) {
+                if (convertView == null) {
                     imageView = new ImageView(mContent);
-                    if (bannerImageLister != null) {
-                        bannerImageLister.onLoadBanner(imageView, imageList.get(position));
-                        if (listener != null) {
-                            imageView.setOnClickListener(listener);
-                        }
-                    }
+
                 } else {
                     imageView = (ImageView) convertView;
                 }
+                if (bannerImageLister != null) {
+                    bannerImageLister.onLoadBanner(imageView, imageList.get(position));
+                    if (listener != null) {
+                        imageView.setOnClickListener(listener);
+                    }
+                }
+
                 return imageView;
             }
 
