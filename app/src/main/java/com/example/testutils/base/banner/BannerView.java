@@ -86,6 +86,8 @@ public class BannerView extends RelativeLayout {
             params.leftMargin = params.rightMargin = dip2px(2);
             DotIndicatorView dotIndicatorView = new DotIndicatorView(mContent);
             dotIndicatorView.setLayoutParams(params);
+            dotIndicatorView.setDrawable(nokIndication);
+            mCurrentPosition=0;
             if (i == 0) {
                 dotIndicatorView.setDrawable(checkIndication);
             } else {
@@ -123,7 +125,7 @@ public class BannerView extends RelativeLayout {
             return;
         }
         viewPage.setAdapter(adapter);
-
+        viewPage.clearOnPageChangeListeners();
         viewPage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

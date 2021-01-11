@@ -1,11 +1,13 @@
 package com.example.testutils.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testutils.R;
+import com.example.testutils.base.banner.BannerAdapter;
 import com.example.testutils.base.banner.BannerView;
 
 import java.util.ArrayList;
@@ -34,36 +36,36 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-//        banner.setAdapter(new BannerAdapter() {
-//            @Override
-//            public View getView(final int position, View contrtView) {
-//                ImageView imageView = null;
-//                if (contrtView == null) {
+        banner.setAdapter(new BannerAdapter() {
+            @Override
+            public View getView(final int position, View contrtView) {
+                ImageView imageView = null;
+                if (contrtView == null) {
+
+                    imageView = new ImageView(MainActivity.this);
+                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+
+                } else {
+                    imageView = (ImageView) contrtView;
+                }
+                imageView.setImageResource(R.mipmap.banner2);
+//                imageView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Toast.makeText(MainActivity.this, "点击" + position, Toast.LENGTH_SHORT).show();
 //
-//                    imageView = new ImageView(MainActivity.this);
-//                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//
-//
-//                } else {
-//                    imageView = (ImageView) contrtView;
-//                }
-        // imageView.setImageResource(R.mipmap.banner2);
-////                imageView.setOnClickListener(new View.OnClickListener() {
-////                    @Override
-////                    public void onClick(View v) {
-////                        Toast.makeText(MainActivity.this, "点击" + position, Toast.LENGTH_SHORT).show();
-////
-////                    }
-////                });
-//
-//                return imageView;
-//            }
-//
-//            @Override
-//            public int getContent() {
-//                return arrrar.size();
-//            }
-//        });
+//                    }
+//                });
+
+                return imageView;
+            }
+
+            @Override
+            public int getContent() {
+                return arrrar.size();
+            }
+        });
         banner.setStartbanner();
 
 
