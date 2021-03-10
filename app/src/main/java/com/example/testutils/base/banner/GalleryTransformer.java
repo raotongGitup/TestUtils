@@ -5,6 +5,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
+
 /**
  * 半透明+缩放(banner透明加缩放动画走廊效果)
  */

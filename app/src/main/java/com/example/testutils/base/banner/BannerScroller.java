@@ -5,7 +5,7 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 public class BannerScroller extends Scroller {
-    private static final int DEFAULT_DURATION = 350;
+    private static  int DEFAULT_DURATION = BannerConfig.DEFAULT_DURATION;
 
     public BannerScroller(Context context) {
         this(context, null);
